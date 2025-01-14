@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqn7rtj4d1rj7"]
+
+[ext_resource type="PackedScene" uid="uid://ck1ds8rvr7yqr" path="res://Objects/pedestal.tscn" id="1_k337l"]
+[ext_resource type="PackedScene" uid="uid://bwsgt6e6x6orb" path="res://Objects/animal.tscn" id="2_ndcaq"]
+
+[node name="patting_area" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="Pedestal" parent="MarginContainer/CenterContainer/MarginContainer" instance=ExtResource("1_k337l")]
+z_index = 1
+
+[node name="Animal" parent="MarginContainer/CenterContainer/MarginContainer" instance=ExtResource("2_ndcaq")]
+z_index = 2
+position = Vector2(0, -23)

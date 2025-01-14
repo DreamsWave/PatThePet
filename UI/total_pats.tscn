@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp1aigj3yxb52"]
+
+[sub_resource type="GDScript" id="GDScript_io5qt"]
+script/source = "extends PanelContainer
+
+@onready var label = $MarginContainer/Label
+
+var pats: int = 0
+
+func _ready() -> void:
+	update_pats_label(pats)
+
+func _on_game_manager_pats_changed(new_pats: Variant) -> void:
+	pats = new_pats
+	update_pats_label(pats)
+	
+func update_pats_label(pats: int) -> void:
+	label.text = str(\"%s pats\" %pats)
+"
+
+[node name="TotalPats" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = SubResource("GDScript_io5qt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0 pats"

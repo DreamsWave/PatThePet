@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwsgt6e6x6orb"]
+
+[ext_resource type="Texture2D" uid="uid://g4l2v5pp6n4b" path="res://assets/images/animals/cinnamoroll.png" id="1_6se7p"]
+[ext_resource type="Script" path="res://Scripts/animal.gd" id="1_x5x4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdgg0"]
+size = Vector2(30, 31)
+
+[node name="Animal" type="RigidBody2D"]
+script = ExtResource("1_x5x4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6se7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_qdgg0")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
