@@ -5,14 +5,12 @@ script/source = "extends PanelContainer
 
 @onready var label = $MarginContainer/Label
 
-var pats: int = 0
-
 func _ready() -> void:
-	update_pats_label(pats)
+	update_pats_label(0)
+	SignalBus.pats_changed.connect(_on_pats_changed)
 
-func _on_game_manager_pats_changed(new_pats: Variant) -> void:
-	pats = new_pats
-	update_pats_label(pats)
+func _on_pats_changed(new_pats: int) -> void:
+	update_pats_label(new_pats)
 	
 func update_pats_label(pats: int) -> void:
 	label.text = str(\"%s pats\" %pats)

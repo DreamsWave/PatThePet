@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwsgt6e6x6orb"]
+[gd_scene load_steps=4 format=3 uid="uid://bwsgt6e6x6orb"]
 
 [ext_resource type="Texture2D" uid="uid://g4l2v5pp6n4b" path="res://assets/images/animals/cinnamoroll.png" id="1_6se7p"]
 [ext_resource type="Script" path="res://Scripts/animal.gd" id="1_l1qaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnf3c"]
 size = Vector2(68, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5a4a"]
-size = Vector2(67.75, 32.5)
 
 [node name="Animal" type="RigidBody2D"]
 input_pickable = true
@@ -19,11 +16,6 @@ shape = SubResource("RectangleShape2D_hnf3c")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6se7p")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.125, 0.25)
-shape = SubResource("RectangleShape2D_k5a4a")
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

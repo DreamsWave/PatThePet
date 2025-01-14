@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="PatThePet"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/images/game-icon.svg"
 
 [autoload]
 
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+Utils="*res://Scripts/Utils.gd"
+Global="*res://Scripts/Global.gd"
+SignalBus="*res://Scripts/SignalBus.gd"
 
 [display]
 
