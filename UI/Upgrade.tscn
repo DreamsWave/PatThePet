@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://22536mg3dvta"]
+[gd_scene load_steps=3 format=3 uid="uid://22536mg3dvta"]
 
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_imr1e"]
-[ext_resource type="Texture2D" uid="uid://bjg6i35blxqb7" path="res://assets/images/game-icon.svg" id="1_nn2dh"]
 [ext_resource type="Script" path="res://Scripts/upgrade.gd" id="2_qnvhk"]
 
 [node name="Upgrade" type="PanelContainer"]
@@ -23,7 +22,6 @@ size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_nn2dh")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

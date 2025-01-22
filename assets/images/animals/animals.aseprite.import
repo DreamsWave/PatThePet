@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="AtlasTexture"
+uid="uid://b0einfe7rbpug"
+path="res://.godot/imported/animals.aseprite-d804630992796b4f590d18f3901edf62.res"
+
+[deps]
+
+source_file="res://assets/images/animals/animals.aseprite"
+dest_files=["res://.godot/imported/animals.aseprite-d804630992796b4f590d18f3901edf62.res"]
+
+[params]
+
+exclude_layers_pattern=""
+only_visible_layers=false

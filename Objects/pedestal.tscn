@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck1ds8rvr7yqr"]
+[gd_scene load_steps=4 format=3 uid="uid://ck1ds8rvr7yqr"]
 
-[ext_resource type="Texture2D" uid="uid://djwr1slsuv0tp" path="res://assets/images/pedestal.png" id="1_8hbrc"]
+[ext_resource type="Texture2D" uid="uid://cgop56roat8hr" path="res://assets/images/objects/objects.png" id="1_57wes"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8njim"]
+atlas = ExtResource("1_57wes")
+region = Rect2(0, 21, 83, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ser"]
 size = Vector2(83, 5)
@@ -8,7 +12,8 @@ size = Vector2(83, 5)
 [node name="Pedestal" type="StaticBody2D"]
 
 [node name="Pedestal" type="Sprite2D" parent="."]
-texture = ExtResource("1_8hbrc")
+texture = SubResource("AtlasTexture_8njim")
+region_rect = Rect2(0, 20, 83, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2.5)

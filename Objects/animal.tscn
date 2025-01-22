@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwsgt6e6x6orb"]
 
-[ext_resource type="Texture2D" uid="uid://g4l2v5pp6n4b" path="res://assets/images/animals/cinnamoroll.png" id="1_6se7p"]
 [ext_resource type="Script" path="res://Scripts/animal.gd" id="1_l1qaj"]
+[ext_resource type="Texture2D" uid="uid://dg13ukn13ac65" path="res://assets/images/animals/animals.png" id="2_xrwix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnf3c"]
 size = Vector2(68, 32)
@@ -14,7 +14,9 @@ script = ExtResource("1_l1qaj")
 shape = SubResource("RectangleShape2D_hnf3c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6se7p")
+texture = ExtResource("2_xrwix")
+region_enabled = true
+region_rect = Rect2(247, 48, 67, 32)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
