@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://c76nakm2cvblr"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://c76nakm2cvblr"]
 
 [ext_resource type="FontFile" uid="uid://ce2lw36a4as8f" path="res://assets/fonts/m5x7.ttf" id="1_8fie3"]
 [ext_resource type="Texture2D" uid="uid://c3gtu2si3ygcl" path="res://assets/images/ui/ui.png" id="1_fqv1q"]
@@ -10,6 +10,8 @@ texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 region_rect = Rect2(64, 24, 6, 6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gaoh6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1ql7"]
 texture = ExtResource("1_fqv1q")
@@ -89,6 +91,7 @@ default_font_size = 16
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.788235, 0.898039, 0.980392, 1)
 Button/styles/disabled = SubResource("StyleBoxTexture_hv81a")
+Button/styles/focus = SubResource("StyleBoxEmpty_gaoh6")
 Button/styles/hover = SubResource("StyleBoxTexture_e1ql7")
 Button/styles/normal = SubResource("StyleBoxTexture_8ynp0")
 Button/styles/pressed = SubResource("StyleBoxTexture_ndt3b")

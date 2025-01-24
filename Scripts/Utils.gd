@@ -1,6 +1,7 @@
 extends Node
 
 enum CURSOR_STATES {
+	EMPTY,
 	DEFAULT,
 	HAND,
 	HAND_POINTER,
