@@ -1,3 +1,5 @@
 extends Node
 
-signal pats_changed(new_amount)
+signal pats_changed
+signal pats_passive_income_changed
+signal pats_per_click_changed

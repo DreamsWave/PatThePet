@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bjk5m5350l6v4"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_7hibb"]
+
+[resource]
+script = ExtResource("1_7hibb")
+name = "Debug"
+description = "debug"
+base_price = 0.0
+price_multiplier = 1.15
+effect_amount = 1000.0
+effect_type = 1
+current_level = 0
+max_level = -1
+dependencies = []

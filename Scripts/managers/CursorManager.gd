@@ -1,8 +1,7 @@
-extends Node
 class_name CursorManager
+extends Node
 
-#var cursor_sheet = load("res://assets/images/cursorsheet.png")
-var cursor_size = Vector2(16, 16)
+var cursor_size = Vector2(48, 48)
 var cursor_positions = {
 	Utils.CURSOR_STATES.DEFAULT: Vector2(0, 0),
 	Utils.CURSOR_STATES.HAND: Vector2(0, 1),
@@ -18,7 +17,8 @@ func _ready() -> void:
 
 func get_cursor_from_sheet(cursor_position: Vector2) -> Texture:
 	var atlas = AtlasTexture.new()
-	atlas.atlas = load("res://assets/images/cursors/cursors.png")
+	atlas.atlas = load("res://assets/images/cursors/cursors-test.png")
+	#atlas.atlas = load("res://assets/images/cursors/cursors.png")
 	atlas.region = Rect2(cursor_position * cursor_size, cursor_size)
 	return atlas
 	

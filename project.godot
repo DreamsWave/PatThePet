@@ -17,7 +17,6 @@ config/icon="res://assets/images/icons/game-icon.png"
 
 [autoload]
 
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 Utils="*res://Scripts/Utils.gd"
 Global="*res://Scripts/Global.gd"
 SignalBus="*res://Scripts/SignalBus.gd"
@@ -33,7 +32,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [rendering]
 

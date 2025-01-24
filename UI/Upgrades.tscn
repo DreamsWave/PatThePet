@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm0gmbv5yqmnu"]
+
+[ext_resource type="Script" path="res://Scripts/upgrades.gd" id="1_kv6t2"]
+[ext_resource type="PackedScene" uid="uid://22536mg3dvta" path="res://UI/Upgrade.tscn" id="2_h5t17"]
+[ext_resource type="Resource" uid="uid://cf461657faxb0" path="res://resources/upgrades/PettingMachineUpgrade.tres" id="3_m4ft3"]
+[ext_resource type="Resource" uid="uid://dtyi1f841a6ie" path="res://resources/upgrades/TreatDispenserUpgrade.tres" id="4_unj12"]
+[ext_resource type="Resource" uid="uid://bjk5m5350l6v4" path="res://resources/upgrades/DebugUpgrade.tres" id="5_l8x00"]
+
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kv6t2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 3
+
+[node name="UpgradeContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Upgrade" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_h5t17")]
+layout_mode = 2
+upgrade_data = ExtResource("3_m4ft3")
+
+[node name="Upgrade2" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_h5t17")]
+layout_mode = 2
+upgrade_data = ExtResource("4_unj12")
+
+[node name="Upgrade3" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_h5t17")]
+layout_mode = 2
+upgrade_data = ExtResource("5_l8x00")

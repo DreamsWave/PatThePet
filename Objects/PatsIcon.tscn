@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjae333spf7fu"]
+
+[ext_resource type="Texture2D" uid="uid://cdmaxrdkfbu5j" path="res://assets/images/icons/icons.png" id="1_qweps"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofqr8"]
+atlas = ExtResource("1_qweps")
+region = Rect2(0, 32, 9, 8)
+
+[node name="PatsIcon" type="TextureRect"]
+offset_right = 9.0
+offset_bottom = 8.0
+texture = SubResource("AtlasTexture_ofqr8")
+stretch_mode = 2
