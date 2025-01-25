@@ -15,7 +15,7 @@ extends Resource
 func get_price() -> int:
 	return round(base_price * pow(price_multiplier, current_level))
 
-func apply_effect(current_income):
+func apply_effect(current_income: float) -> float:
 	match effect_type:
 		Utils.UPGRADE_EFFECT_TYPES.FLAT_INCREASE:
 			return current_income + effect_amount
@@ -24,12 +24,12 @@ func apply_effect(current_income):
 		Utils.UPGRADE_EFFECT_TYPES.MULTIPLIER:
 			return current_income * effect_amount
 		_:
-			return current_income  # Default to no change if unknown type
+			return current_income
 
-func can_purchase():
+func can_purchase() -> bool:
 	return max_level == -1 or current_level < max_level
 
-func level_up():
+func level_up() -> bool:
 	if can_purchase():
 		current_level += 1
 		return true

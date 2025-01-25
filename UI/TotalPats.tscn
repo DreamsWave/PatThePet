@@ -17,22 +17,21 @@ region_rect = Rect2(48, 12, 10, 10)
 resource_name = "total_pats"
 script/source = "extends PanelContainer
 
-@onready var amount_label = %AmountLabel
+@onready var amount_label: Label = %AmountLabel
 
 func _ready() -> void:
 	update_pats_stats()
-	SignalBus.pats_changed.connect(_pats_changed)
-	SignalBus.pats_passive_income_changed.connect(_pats_passive_income_changed)
+	SignalBus.total_pats_changed.connect(_total_pats_changed)
+	SignalBus.passive_income_rate_changed.connect(_pats_passive_income_changed)
 
-func _pats_changed(_value) -> void:
+func _total_pats_changed(_pats: float) -> void:
 	update_pats_stats()
 
-func _pats_passive_income_changed(_value) -> void:
+func _pats_passive_income_changed(_income: float) -> void:
 	update_pats_stats()
 	
 func update_pats_stats() -> void:
-	var pats = Global.pats_manager.pats
-	amount_label.text = str(Utils.to_scientific_notation(pats))
+	amount_label.text = str(Utils.to_scientific_notation(PatsManager.get_total_pats()))
 "
 
 [sub_resource type="FontVariation" id="FontVariation_qb8sv"]

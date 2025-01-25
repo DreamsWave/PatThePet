@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PatsData" load_steps=2 format=3 uid="uid://c501f2rygsil1"]
+
+[ext_resource type="Script" path="res://Scripts/PatsData.gd" id="1_7rvv7"]
+
+[resource]
+script = ExtResource("1_7rvv7")
+total_pats = 0.0
+passive_income_rate = 0.0
+pats_per_click = 1.0
+current_upgrades = {}
