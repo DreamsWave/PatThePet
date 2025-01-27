@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Resources/GameStats.gd" id="1_82oto"]
+
+[resource]
+script = ExtResource("1_82oto")
+total_pats = 0.0
+passive_income_per_second = 0.0
+pats_per_click = 1.0

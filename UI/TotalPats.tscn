@@ -22,16 +22,16 @@ script/source = "extends PanelContainer
 func _ready() -> void:
 	update_pats_stats()
 	SignalBus.total_pats_changed.connect(_total_pats_changed)
-	SignalBus.passive_income_rate_changed.connect(_pats_passive_income_changed)
+	SignalBus.passive_income_per_second_changed.connect(_passive_income_per_second_changed)
 
 func _total_pats_changed(_pats: float) -> void:
 	update_pats_stats()
 
-func _pats_passive_income_changed(_income: float) -> void:
+func _passive_income_per_second_changed(_income: float) -> void:
 	update_pats_stats()
 	
 func update_pats_stats() -> void:
-	amount_label.text = str(Utils.to_scientific_notation(PatsManager.get_total_pats()))
+	amount_label.text = str(Utils.to_scientific_notation(StatsManager.game_stats.total_pats))
 "
 
 [sub_resource type="FontVariation" id="FontVariation_qb8sv"]

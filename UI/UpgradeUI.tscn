@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://22536mg3dvta"]
+
+[ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_k80lb"]
+[ext_resource type="Script" path="res://UI/UpgradeUI.gd" id="2_4jj84"]
+
+[node name="UpgradeUI" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 41.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_k80lb")
+script = ExtResource("2_4jj84")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Image" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Some name"
+
+[node name="Level" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 lvl"
+
+[node name="PurchaseButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+text = "0"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]

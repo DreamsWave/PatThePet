@@ -7,4 +7,6 @@ func _ready() -> void:
 	Global.main = self
 
 func _on_timer_timeout() -> void:
-	PatsManager.add_passive_income()
+	StatsManager.accrue_passive_income()
+	StatsManager.save_game_stats()
+	UpgradeManager.save_upgrades()

@@ -26,13 +26,12 @@ func _on_reset_pressed() -> void:
 	reset_game_state()
 
 func reset_game_state() -> void:
-	PatsManager.set_total_pats(0)
-	PatsManager.set_passive_income_rate(0)
-	PatsManager.set_pats_per_click(1)
+	StatsManager.reset_game_stats()
+	UpgradeManager.reset_upgrades()
 
 
 func _on_multiply_income_pressed() -> void:
-	PatsManager.set_passive_income_rate(PatsManager.get_passive_income_rate() * 10)
+	StatsManager.game_stats.passive_income_per_second *= 10
 
 func _on_open_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

@@ -17,12 +17,12 @@ config/icon="res://assets/images/icons/game-icon.png"
 
 [autoload]
 
-Utils="*res://Util/Autoload/Utils.gd"
-Global="*res://Util/Autoload/Global.gd"
-SignalBus="*res://Util/Autoload/SignalBus.gd"
-CursorManager="*res://Util/Autoload/Managers/CursorManager.gd"
-PatsManager="*res://Util/Autoload/Managers/PatsManager.gd"
-UpgradeManager="*res://Util/Autoload/Managers/UpgradeManager.gd"
+Utils="*res://Utils/Autoload/Utils.gd"
+Global="*res://Utils/Autoload/Global.gd"
+SignalBus="*res://Utils/Autoload/SignalBus.gd"
+CursorManager="*res://Utils/Autoload/Managers/CursorManager.gd"
+UpgradeManager="*res://Utils/Autoload/Managers/UpgradeManager.gd"
+StatsManager="*res://Utils/Autoload/Managers/StatsManager.gd"
 
 [debug]
 
@@ -40,7 +40,18 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Resources/": "orange",
+"res://Scenes/": "green",
+"res://Scripts/": "purple",
+"res://UI/": "teal",
+"res://Utils/": "pink",
+"res://assets/": "red"
+}
 
 [input]
 

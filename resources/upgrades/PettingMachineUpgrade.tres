@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cf461657faxb0"]
+[gd_resource type="Resource" script_class="UpgradeStats" load_steps=2 format=3 uid="uid://cf461657faxb0"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_sna2c"]
+[ext_resource type="Script" path="res://Resources/UpgradeStats.gd" id="1_24gv7"]
 
 [resource]
-script = ExtResource("1_sna2c")
-name = "Petting machine"
-description = "Petting machine"
+script = ExtResource("1_24gv7")
+name = "Petting Machine"
+description = "Petting machine upgrade"
 base_price = 5.0
 price_multiplier = 1.15
 effect_amount = 2.0
 effect_type = 0
 current_level = 0
 max_level = -1
-dependencies = []
