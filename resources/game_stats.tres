@@ -4,6 +4,13 @@
 
 [resource]
 script = ExtResource("1_82oto")
-total_pats = 0.0
-passive_income_per_second = 0.0
+total_pats = 1257.0
+passive_income_per_second = 176.0
 pats_per_click = 1.0
+upgrades = [{
+"current_level": 13,
+"name": "Petting Machine"
+}, {
+"current_level": 30,
+"name": "Treat Dispenser"
+}]

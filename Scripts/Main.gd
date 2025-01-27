@@ -8,5 +8,5 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	StatsManager.accrue_passive_income()
-	StatsManager.save_game_stats()
-	UpgradeManager.save_upgrades()
+	if (Global.SAVING_ENABLED): 
+		StatsManager.save_game_stats()

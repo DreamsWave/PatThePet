@@ -5,61 +5,52 @@ var upgrades_stats: Array[UpgradeStats] = [
 	preload("res://Resources/upgrades/TreatDispenserUpgrade.tres"),
 ]
 
-func _ready() -> void:
-	UpgradeManager.load_upgrades()
+var game_stats: GameStats
 
-func _on_game_exit() -> void:
-	UpgradeManager.save_upgrades()
+func _ready() -> void:
+	if StatsManager:
+		game_stats = StatsManager.game_stats
+		if not game_stats:
+			game_stats = GameStats.new() 
+		load_upgrades()
+	else:
+		push_error("StatsManager not found.")
 
 func get_upgrade_cost(upgrade_name: String) -> float:
 	for upgrade in upgrades_stats:
 		if upgrade.name == upgrade_name:
-			return upgrade.get_price()
-	return -1  # Not found
+			var current_level: int = game_stats.get_upgrade_level(upgrade_name)
+			return upgrade.get_price(current_level)
+	return -1
 
 func purchase_upgrade(upgrade_name: String) -> bool:
 	for upgrade in upgrades_stats:
-		if upgrade.name == upgrade_name and upgrade.can_purchase():
-			if StatsManager.game_stats.has_sufficient_pats(upgrade.get_price()): 
-				StatsManager.game_stats.spend_pats(upgrade.get_price())
-				upgrade.level_up()
+		if upgrade.name == upgrade_name:
+			var current_level: int = game_stats.get_upgrade_level(upgrade_name)
+			if game_stats.has_sufficient_pats(upgrade.get_price(current_level)):
+				game_stats.spend_pats(upgrade.get_price(current_level))
+				game_stats.update_upgrade(upgrade_name, current_level + 1)
 				apply_upgrade_effect(upgrade)
 				return true
 	return false
 
 func apply_upgrade_effect(upgrade: UpgradeStats) -> void:
-	var new_passive_income_per_second: float = upgrade.apply_effect(StatsManager.game_stats.passive_income_per_second)
-	StatsManager.game_stats.passive_income_per_second = new_passive_income_per_second
+	var current_income: float = game_stats.passive_income_per_second
+	var current_level: int = game_stats.get_upgrade_level(upgrade.name)
+	var new_passive_income_per_second: float = upgrade.apply_effect(current_income, current_level)
+	game_stats.passive_income_per_second = new_passive_income_per_second
 
 func reset_upgrades() -> void:
 	for upgrade in upgrades_stats:
-		upgrade.current_level = 0
-
-func save_upgrades() -> void:
-	var save_data: Dictionary = {}
-	for upgrade in upgrades_stats:
-		save_data[upgrade.name] = {
-			"current_level": upgrade.current_level
-		}
-
-		var file := FileAccess.open("user://upgrades.save", FileAccess.WRITE)
-		if file != null:
-			file.store_var(save_data)
-			file.close()
-		else:
-			push_error("Failed to open file for saving upgrades.")
+		game_stats.update_upgrade(upgrade.name, 0)
 
 func load_upgrades() -> void:
-	if FileAccess.file_exists("user://upgrades.save"):
-		var file := FileAccess.open("user://upgrades.save", FileAccess.READ)
-		if file != null:
-			var save_data: Dictionary = file.get_var() as Dictionary
-			file.close()
-			
-			for upgrade in upgrades_stats:
-				if save_data.has(upgrade.name):
-					var saved_upgrade_data: Dictionary = save_data[upgrade.name]
-					upgrade.current_level = saved_upgrade_data["current_level"]
-					SignalBus.upgrade_level_changed.emit(upgrade.current_level, upgrade)
-		else:
-			push_error("Failed to read upgrades save file.")
+	for upgrade in upgrades_stats:
+		if game_stats.get_upgrade_level(upgrade.name) == 0:
+			game_stats.update_upgrade(upgrade.name, 0)
+	
+func get_upgrade_stats(upgrade_name: String) -> UpgradeStats:
+	for upgrade in upgrades_stats:
+		if upgrade.name == upgrade_name:
+			return upgrade
+	return null

@@ -4,7 +4,6 @@ extends Control
 @onready var name_label: Label = %Name
 @onready var level_label: Label = %Level
 @onready var purchase_button: Button = %PurchaseButton
-
 @export var upgrade_stats: UpgradeStats
 @export var is_button_disabled: bool = false
 
@@ -24,8 +23,9 @@ func _on_upgrade_level_changed(_new_level: int, changed_upgrade: UpgradeStats) -
 		_update_purchase_button_state()
 
 func _update_purchase_button_state() -> void:
-	var can_afford: bool = StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price())
-	is_button_disabled = !can_afford or !upgrade_stats.can_purchase()
+	var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
+	var can_afford: bool = StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price(current_level))
+	is_button_disabled = !can_afford or !upgrade_stats.can_purchase(current_level)
 	purchase_button.disabled = is_button_disabled
 
 func _on_purchase_button_pressed() -> void:
@@ -34,10 +34,12 @@ func _on_purchase_button_pressed() -> void:
 
 func update_ui() -> void:
 	if upgrade_stats:
+		var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
 		name_label.text = upgrade_stats.name
-		level_label.text = "Lvl " + Utils.to_scientific_notation(upgrade_stats.current_level) if upgrade_stats.current_level > 0 else ""
-		purchase_button.text = Utils.to_scientific_notation(upgrade_stats.get_price())
+		level_label.text = "Lvl " + Utils.to_scientific_notation(current_level) if current_level > 0 else ""
+		purchase_button.text = Utils.to_scientific_notation(upgrade_stats.get_price(current_level))
 		icon.texture = upgrade_stats.icon
 
 func can_purchase_upgrade() -> bool:
-	return StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price()) and upgrade_stats.can_purchase()
+	var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
+	return StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price(current_level)) and upgrade_stats.can_purchase(current_level)

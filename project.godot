@@ -21,8 +21,8 @@ Utils="*res://Utils/Autoload/Utils.gd"
 Global="*res://Utils/Autoload/Global.gd"
 SignalBus="*res://Utils/Autoload/SignalBus.gd"
 CursorManager="*res://Utils/Autoload/Managers/CursorManager.gd"
-UpgradeManager="*res://Utils/Autoload/Managers/UpgradeManager.gd"
 StatsManager="*res://Utils/Autoload/Managers/StatsManager.gd"
+UpgradeManager="*res://Utils/Autoload/Managers/UpgradeManager.gd"
 
 [debug]
 
