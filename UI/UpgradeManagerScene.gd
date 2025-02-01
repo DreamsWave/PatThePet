@@ -1,6 +1,7 @@
 extends Control
 
-@export var upgrades_stats: Array[UpgradeStats] = [
+var upgrades_stats: Array[UpgradeStats] = [
+	preload("res://Resources/upgrades/PatUpgrade.tres"),
 	preload("res://Resources/upgrades/PettingMachineUpgrade.tres"),
 	preload("res://Resources/upgrades/TreatDispenserUpgrade.tres")
 ]

@@ -31,7 +31,7 @@ func _passive_income_per_second_changed(_income: float) -> void:
 	update_pats_stats()
 	
 func update_pats_stats() -> void:
-	amount_label.text = str(Utils.to_scientific_notation(StatsManager.game_stats.total_pats))
+	amount_label.text = str(Utils.to_scientific_notation(StatsManager.game_stats.total_pats, true))
 "
 
 [sub_resource type="FontVariation" id="FontVariation_qb8sv"]

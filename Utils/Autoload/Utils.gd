@@ -14,9 +14,10 @@ enum UPGRADE_EFFECT_TYPES {
 	MULTIPLIER
 }
 
-func to_scientific_notation(number: float) -> String:
+func to_scientific_notation(number: float, to_int: bool = false) -> String:
 	if number == 0:
 		return "0"
+	if (to_int): number = int(number)
 	var number_str := str(number)
 	# If the string representation of the number fits within MAX_DIGITS, return it as is
 	if number_str.length() <= Global.MAX_DIGITS:

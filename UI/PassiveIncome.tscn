@@ -1,19 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmrl3vij4fxv6"]
 
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_2mrv8"]
-
-[sub_resource type="GDScript" id="GDScript_e3mr7"]
-resource_name = "passive_income"
-script/source = "extends Label
-
-func _ready() -> void:
-	_update_passive_income(StatsManager.game_stats.calculate_passive_income())
-	SignalBus.passive_income_per_second_changed.connect(_update_passive_income)
-
-
-func _update_passive_income(_new_passive_income: float) -> void:
-	text = str(\"+\" + Utils.to_scientific_notation(int(StatsManager.game_stats.calculate_passive_income())))
-"
+[ext_resource type="Script" path="res://UI/passive_income.gd" id="2_g2n6g"]
 
 [node name="PassiveIncome" type="Label"]
 anchors_preset = 15
@@ -24,4 +12,4 @@ grow_vertical = 2
 theme = ExtResource("1_2mrv8")
 text = "0"
 horizontal_alignment = 2
-script = SubResource("GDScript_e3mr7")
+script = ExtResource("2_g2n6g")

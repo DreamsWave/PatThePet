@@ -10,8 +10,8 @@ extends Resource
 @export var max_level: int = -1
 @export var icon: Texture
 
-func get_price(level: int) -> int:
-	return round(base_price * pow(price_multiplier, level))
+func get_price(level: float) -> float:
+	return snapped(base_price * pow(price_multiplier, level), 0.01)
 
 func can_purchase(level: int) -> bool:
 	return max_level == -1 or level < max_level

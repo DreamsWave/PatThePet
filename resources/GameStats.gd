@@ -7,10 +7,10 @@ extends Resource
 			total_pats = value
 			SignalBus.total_pats_changed.emit(value)
 
-@export var passive_income_per_second: float = 0.0:
+@export var _passive_income_per_second: float = 0.0:
 	set(value):
-		if value != passive_income_per_second: 
-			passive_income_per_second = value
+		if value != _passive_income_per_second: 
+			_passive_income_per_second = value
 			SignalBus.passive_income_per_second_changed.emit(value)
 
 @export var pats_per_click: float = 1.0:
@@ -20,6 +20,8 @@ extends Resource
 			SignalBus.pats_per_click_changed.emit(value)
 
 @export var upgrades: Array = []
+
+@export var passive_income_multiplier: float = 1.0
 
 class UpgradeData:
 	var name: String
@@ -60,26 +62,33 @@ func update_upgrade(upgrade_name: String, level: int) -> void:
 		if upgrades[i] is Dictionary and upgrades[i]["name"] == upgrade_name:
 			upgrades[i]["current_level"] = level
 			SignalBus.upgrade_level_changed.emit(level, upgrade_stats)
+			update_passive_income()
 			return
 	upgrades.append({"name": upgrade_name, "current_level": level})
 	SignalBus.upgrade_level_changed.emit(level, upgrade_stats)
+	update_passive_income()
 
 func calculate_passive_income() -> float:
 	var income: float = 0.0
+	
+	# Calculate income based on upgrades level
 	for upgrade in upgrades as Array[Dictionary]:
 		var upgrade_stats: UpgradeStats = UpgradeManager.get_upgrade_stats(upgrade["name"])
 		if upgrade_stats:
 			income = upgrade_stats.apply_effect(income, upgrade["current_level"])
-			# Here you can add other sources of passive income
-			# income += some_other_income_source()
-	return income
+			
+	# Add passive income multiplier
+	income *= passive_income_multiplier
+	
+	# Place for other incomes
+	
+	return snapped(income, 0.01)
 
 func update_passive_income() -> void:
 	var new_income: float = calculate_passive_income()
-	if new_income != passive_income_per_second:
-		passive_income_per_second = new_income
-		SignalBus.passive_income_per_second_changed.emit(new_income)
+	if new_income != _passive_income_per_second:
+		_passive_income_per_second = new_income
 
 func accrue_passive_income() -> void:
-	total_pats += passive_income_per_second
+	total_pats += _passive_income_per_second
 	update_passive_income()

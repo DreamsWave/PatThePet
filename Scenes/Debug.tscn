@@ -31,7 +31,7 @@ func reset_game_state() -> void:
 
 
 func _on_multiply_income_pressed() -> void:
-	StatsManager.game_stats.passive_income_per_second *= 10
+	StatsManager.game_stats.passive_income_multiplier *= Global.DEBUG_INCOME_MULTIPLIER
 
 func _on_open_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

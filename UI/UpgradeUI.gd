@@ -36,8 +36,8 @@ func update_ui() -> void:
 	if upgrade_stats:
 		var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
 		name_label.text = upgrade_stats.name
-		level_label.text = "Lvl " + Utils.to_scientific_notation(current_level) if current_level > 0 else ""
-		purchase_button.text = Utils.to_scientific_notation(upgrade_stats.get_price(current_level))
+		level_label.text = "Lvl " + str(current_level) if current_level > 0 else ""
+		purchase_button.text = Utils.to_scientific_notation(int(upgrade_stats.get_price(current_level)))
 		icon.texture = upgrade_stats.icon
 
 func can_purchase_upgrade() -> bool:

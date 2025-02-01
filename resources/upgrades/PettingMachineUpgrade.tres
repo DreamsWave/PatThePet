@@ -6,9 +6,8 @@
 script = ExtResource("1_24gv7")
 name = "Petting Machine"
 description = "Petting machine upgrade"
-base_price = 5.0
+base_price = 100.0
 price_multiplier = 1.15
-effect_amount = 2.0
+effect_amount = 1.0
 effect_type = 0
-current_level = 0
 max_level = -1
