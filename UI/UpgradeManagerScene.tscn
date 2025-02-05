@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm0gmbv5yqmnu"]
+[gd_scene load_steps=3 format=3 uid="uid://bvaqkf1wyag8j"]
 
-[ext_resource type="Script" path="res://UI/UpgradeManagerScene.gd" id="1_jmn60"]
+[ext_resource type="PackedScene" uid="uid://22536mg3dvta" path="res://UI/UpgradeUI.tscn" id="2_cy680"]
+
+[sub_resource type="GDScript" id="GDScript_rnj6m"]
+script/source = "extends Control
+
+var upgrades_stats: Array[UpgradeStats] = [
+	preload(\"res://Resources/upgrades/PatUpgrade.tres\"),
+	preload(\"res://Resources/upgrades/PettingMachineUpgrade.tres\"),
+	preload(\"res://Resources/upgrades/TreatDispenserUpgrade.tres\")
+]
+@onready var upgrade_container: VBoxContainer = %UpgradeContainer
+
+func _ready() -> void:
+	display_upgrades()
+
+func display_upgrades() -> void:
+	reset_upgrade_container()
+	for upgrade in upgrades_stats:
+		var upgrade_ui := preload(\"res://UI/UpgradeUI.tscn\").instantiate()
+		upgrade_ui.upgrade_stats = upgrade
+		upgrade_container.add_child(upgrade_ui)
+
+func reset_all_upgrades() -> void:
+	for upgrade in upgrades_stats:
+		upgrade.current_level = 0
+		SignalBus.upgrade_level_changed.emit(0, upgrade)
+	display_upgrades()
+	
+func reset_upgrade_container() -> void:
+	var children := upgrade_container.get_children()
+	for c in children:
+		upgrade_container.remove_child(c)
+"
 
 [node name="UpgradeManagerScene" type="Control"]
 layout_mode = 3
@@ -9,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jmn60")
+script = SubResource("GDScript_rnj6m")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -30,3 +62,21 @@ theme_override_constants/margin_right = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="UpgradeUI" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2
+
+[node name="UpgradeUI2" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2
+
+[node name="UpgradeUI3" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2
+
+[node name="UpgradeUI4" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2
+
+[node name="UpgradeUI5" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2
+
+[node name="UpgradeUI6" parent="ScrollContainer/MarginContainer/UpgradeContainer" instance=ExtResource("2_cy680")]
+layout_mode = 2

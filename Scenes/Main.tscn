@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckg0wvvq66j8d"]
+[gd_scene load_steps=11 format=3 uid="uid://ckg0wvvq66j8d"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_hkjet"]
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="2_dpr2l"]
 [ext_resource type="Texture2D" uid="uid://lhttmowcxw5t" path="res://assets/images/ui/backgrounds/background-pattern-0.png" id="3_ev2oh"]
+[ext_resource type="PackedScene" uid="uid://dtd5a4n17hddy" path="res://UI/UpgradesWindow.tscn" id="4_f4ykw"]
 [ext_resource type="PackedScene" uid="uid://jjof0f02ct10" path="res://UI/ControlPanel.tscn" id="4_wrvqa"]
 [ext_resource type="PackedScene" uid="uid://dancvl24pawce" path="res://UI/TotalPats.tscn" id="5_0gvsy"]
 [ext_resource type="PackedScene" uid="uid://bwsgt6e6x6orb" path="res://Objects/animal.tscn" id="5_1kejj"]
@@ -36,7 +37,12 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
+[node name="UpgradesWindow" parent="UI/MarginContainer/HBoxContainer" instance=ExtResource("4_f4ykw")]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="ControlPanel" parent="UI/MarginContainer/HBoxContainer" instance=ExtResource("4_wrvqa")]
+visible = false
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3

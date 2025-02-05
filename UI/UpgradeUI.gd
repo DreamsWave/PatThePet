@@ -4,12 +4,14 @@ extends Control
 @onready var name_label: Label = %Name
 @onready var level_label: Label = %Level
 @onready var purchase_button: Button = %PurchaseButton
+
 @export var upgrade_stats: UpgradeStats
 @export var is_button_disabled: bool = false
 
 func _ready() -> void:
 	if upgrade_stats:
 		update_ui()
+		
 	_update_purchase_button_state()
 	SignalBus.total_pats_changed.connect(_on_total_pats_changed)
 	SignalBus.upgrade_level_changed.connect(_on_upgrade_level_changed)
@@ -23,10 +25,11 @@ func _on_upgrade_level_changed(_new_level: int, changed_upgrade: UpgradeStats) -
 		_update_purchase_button_state()
 
 func _update_purchase_button_state() -> void:
-	var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
-	var can_afford: bool = StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price(current_level))
-	is_button_disabled = !can_afford or !upgrade_stats.can_purchase(current_level)
-	purchase_button.disabled = is_button_disabled
+	if (upgrade_stats):
+		var current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats.name)
+		var can_afford: bool = StatsManager.game_stats.has_sufficient_pats(upgrade_stats.get_price(current_level))
+		is_button_disabled = !can_afford or !upgrade_stats.can_purchase(current_level)
+		purchase_button.disabled = is_button_disabled
 
 func _on_purchase_button_pressed() -> void:
 	if can_purchase_upgrade():

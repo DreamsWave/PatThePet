@@ -9,7 +9,7 @@ script/source = "extends Control
 @onready var panel: MarginContainer = %Panel
 @onready var open_button: ColorRect = %OpenButton
 
-var is_debug_visible: bool = false
+@export var is_debug_visible: bool = false
 
 func _ready() -> void:
 	panel.visible = is_debug_visible
