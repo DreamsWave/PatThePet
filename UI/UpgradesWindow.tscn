@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtd5a4n17hddy"]
+[gd_scene load_steps=8 format=3 uid="uid://dtd5a4n17hddy"]
 
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_rkehv"]
 [ext_resource type="Texture2D" uid="uid://coqkrnjauh885" path="res://assets/images/ui/window.png" id="2_b8ehk"]
 [ext_resource type="Script" path="res://UI/upgrades_window.gd" id="2_keclr"]
 [ext_resource type="PackedScene" uid="uid://22536mg3dvta" path="res://UI/UpgradeUI.tscn" id="4_2ewae"]
+[ext_resource type="Texture2D" uid="uid://da66q7gokw67p" path="res://assets/images/ui/icons/x.png" id="4_3tqln"]
+[ext_resource type="ButtonGroup" uid="uid://cahggyov66tql" path="res://Resources/lvl_list_group.tres" id="5_fjs5a"]
+[ext_resource type="Texture2D" uid="uid://drjob584f7edn" path="res://assets/images/ui/window-inner-panel.png" id="6_q6i52"]
 
 [node name="UpgradesWindow" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 281.0
+offset_bottom = 214.0
 theme = ExtResource("1_rkehv")
 script = ExtResource("2_keclr")
 
@@ -30,14 +31,14 @@ patch_margin_bottom = 3
 
 [node name="WindowTopPanelMarginContainer" type="MarginContainer" parent="WindowNinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.094
-offset_bottom = 0.0799999
+offset_bottom = 17.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 1
 
 [node name="TopPanelHBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowTopPanelMarginContainer"]
 layout_mode = 2
@@ -69,6 +70,11 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme_override_constants/separation = 1
 
+[node name="Button" type="Button" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer/TopPanelButtonsMarginContainer/TopPanelButtonsHBoxContainer"]
+visible = false
+layout_mode = 2
+icon = ExtResource("4_3tqln")
+
 [node name="WindowContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
@@ -86,31 +92,128 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="ContentScrollContainer" type="ScrollContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer"]
 layout_mode = 2
+
+[node name="LvlHBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="LvlLabelCurrent" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LvlLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Lvl"
+
+[node name="LvlListHBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="LvlButton1" type="Button" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("5_fjs5a")
+text = "x1"
+
+[node name="LvlButton10" type="Button" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("5_fjs5a")
+text = "x10"
+
+[node name="LvlButton25" type="Button" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("5_fjs5a")
+text = "x25"
+
+[node name="LvlButton100" type="Button" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("5_fjs5a")
+text = "x100"
+
+[node name="LvlButtonMAX" type="Button" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("5_fjs5a")
+text = "MAX"
+
+[node name="ContentScrollContainer" type="ScrollContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="ContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer"]
+[node name="ContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_right = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 4
 
-[node name="UpgradesVBoxContainer" type="VBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/ContentMarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_q6i52")
+region_rect = Rect2(0, 0, 5, 5)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="UpgradesVBoxContainer" type="VBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UpgradeUI" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/ContentMarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+[node name="UpgradeUI" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
 layout_mode = 2
 
-[node name="UpgradeUI2" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/ContentMarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+[node name="UpgradeUI2" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
 layout_mode = 2
 
-[node name="UpgradeUI3" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/ContentMarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+[node name="UpgradeUI3" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
 layout_mode = 2
+
+[node name="UpgradeUI4" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+visible = false
+layout_mode = 2
+
+[node name="UpgradeUI5" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+visible = false
+layout_mode = 2
+
+[node name="UpgradeUI6" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/ContentScrollContainer/ContentMarginContainer/NinePatchRect/MarginContainer/UpgradesVBoxContainer" instance=ExtResource("4_2ewae")]
+visible = false
+layout_mode = 2
+
+[connection signal="toggled" from="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer/LvlButton1" to="." method="_on_lvl_button_1_toggled"]
+[connection signal="toggled" from="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer/LvlButton10" to="." method="_on_lvl_button_10_toggled"]
+[connection signal="toggled" from="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer/LvlButton25" to="." method="_on_lvl_button_25_toggled"]
+[connection signal="toggled" from="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer/LvlButton100" to="." method="_on_lvl_button_100_toggled"]
+[connection signal="toggled" from="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/VBoxContainer/LvlHBoxContainer/LvlListHBoxContainer/LvlButtonMAX" to="." method="_on_lvl_button_max_toggled"]

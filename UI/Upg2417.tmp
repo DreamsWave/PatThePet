@@ -1,22 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://22536mg3dvta"]
+[gd_scene load_steps=5 format=3 uid="uid://22536mg3dvta"]
 
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_k80lb"]
 [ext_resource type="Script" path="res://UI/UpgradeUI.gd" id="2_4jj84"]
-[ext_resource type="Texture2D" uid="uid://drjob584f7edn" path="res://assets/images/ui/window-inner-panel.png" id="2_vkatp"]
+[ext_resource type="Texture2D" uid="uid://7oj8b4ldeg0n" path="res://assets/images/ui/icons/upgrades/treat-dispenser.png" id="3_0puc8"]
 [ext_resource type="Texture2D" uid="uid://cl1vt08xfjyf1" path="res://assets/images/ui/icons/pats.png" id="4_sgjhq"]
-[ext_resource type="Texture2D" uid="uid://dv43u8mr3yhyr" path="res://assets/images/ui/icons/upgrades/pat.png" id="4_ujcs1"]
 
-[node name="UpgradeUI" type="NinePatchRect"]
-custom_minimum_size = Vector2(200, 42)
-offset_right = 90.0
-offset_bottom = 42.0
+[node name="UpgradeUI" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -281.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
 theme = ExtResource("1_k80lb")
-texture = ExtResource("2_vkatp")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
 script = ExtResource("2_4jj84")
+is_button_disabled = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -39,21 +39,16 @@ theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="UpgradeIcon" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/CenterContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("4_ujcs1")
-stretch_mode = 2
+texture = ExtResource("3_0puc8")
+stretch_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 theme_override_constants/separation = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -82,7 +77,6 @@ text = "0 lvl"
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -93,31 +87,26 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
 
-[node name="UpgradePassiveIncomeHBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/UpgradePassiveIncomeHBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = -3
+theme_override_constants/margin_top = -2
 
-[node name="UpgradePassiveIncomeLabel" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/UpgradePassiveIncomeHBoxContainer/MarginContainer"]
+[node name="UpgradePassiveIncomeLabel" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "+123.5"
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/UpgradePassiveIncomeHBoxContainer"]
-layout_mode = 2
-
-[node name="PassiveIncomePatsIcon" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/UpgradePassiveIncomeHBoxContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/VBoxContainer2/CenterContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_sgjhq")
-stretch_mode = 2
+stretch_mode = 3
 
 [node name="PurchaseButton" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -135,7 +124,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -155,7 +144,7 @@ theme_override_constants/separation = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = -3
+theme_override_constants/margin_top = -2
 
 [node name="UpgradePriceLabel" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -164,12 +153,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "123"
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="PricePatsIcon" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_sgjhq")
-stretch_mode = 2
+stretch_mode = 3
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/HBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]

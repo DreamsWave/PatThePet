@@ -52,8 +52,8 @@ func get_upgrade_data(upgrade_name: String) -> UpgradeData:
 			return UpgradeData.new(upgrade["name"], upgrade["current_level"])
 	return UpgradeData.new(upgrade_name, 0)  # Return a default UpgradeData if not found
 
-func get_upgrade_level(upgrade_name: String) -> int:
-	var upgrade_data: UpgradeData = get_upgrade_data(upgrade_name)
+func get_upgrade_level(upgrade_stats: UpgradeStats) -> int:
+	var upgrade_data: UpgradeData = get_upgrade_data(upgrade_stats.name)
 	return upgrade_data.current_level
 
 func update_upgrade(upgrade_name: String, level: int) -> void:

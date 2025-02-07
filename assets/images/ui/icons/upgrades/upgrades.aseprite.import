@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b3tjy0aq5s4vb"
+path="res://.godot/imported/upgrades.aseprite-11e7dc7714fdbd62fbf5c3a5633022b4.res"
+
+[deps]
+
+source_file="res://assets/images/ui/icons/upgrades/upgrades.aseprite"
+dest_files=["res://.godot/imported/upgrades.aseprite-11e7dc7714fdbd62fbf5c3a5633022b4.res"]
+
+[params]
+

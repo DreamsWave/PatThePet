@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UpgradeStats" load_steps=2 format=3 uid="uid://c23fqn3o4a6v4"]
+[gd_resource type="Resource" script_class="UpgradeStats" load_steps=3 format=3 uid="uid://c23fqn3o4a6v4"]
 
 [ext_resource type="Script" path="res://Resources/UpgradeStats.gd" id="1_bja0c"]
+[ext_resource type="Texture2D" uid="uid://dv43u8mr3yhyr" path="res://assets/images/ui/icons/upgrades/pat.png" id="1_t712l"]
 
 [resource]
 script = ExtResource("1_bja0c")
@@ -11,3 +12,4 @@ price_multiplier = 1.15
 effect_amount = 0.1
 effect_type = 0
 max_level = -1
+icon = ExtResource("1_t712l")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jjof0f02ct10"]
+[gd_scene load_steps=3 format=3 uid="uid://dxk2hv213fqxq"]
 
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_h53w5"]
-[ext_resource type="PackedScene" uid="uid://cm0gmbv5yqmnu" path="res://UI/UpgradeManagerScene.tscn" id="2_mtsmx"]
+[ext_resource type="PackedScene" uid="uid://bvaqkf1wyag8j" path="res://UI/UpgradeManagerScene.tscn" id="2_mtsmx"]
 
 [node name="ControlPanel" type="Control"]
 z_index = 4

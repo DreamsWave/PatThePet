@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="GameStats" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Resources/GameStats.gd" id="1_82oto"]
+[ext_resource type="Script" path="res://Resources/GameStats.gd" id="1"]
 
 [resource]
-script = ExtResource("1_82oto")
-total_pats = 48.23
-_passive_income_per_second = 2.0
+script = ExtResource("1")
+total_pats = 0.0
+_passive_income_per_second = 0.0
 pats_per_click = 1.0
 upgrades = [{
-"current_level": 10,
+"current_level": 0,
 "name": "Pat"
 }, {
-"current_level": 1,
+"current_level": 0,
 "name": "Petting Machine"
 }, {
 "current_level": 0,

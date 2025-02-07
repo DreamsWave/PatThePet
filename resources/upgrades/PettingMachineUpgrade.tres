@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UpgradeStats" load_steps=2 format=3 uid="uid://cf461657faxb0"]
+[gd_resource type="Resource" script_class="UpgradeStats" load_steps=3 format=3 uid="uid://cf461657faxb0"]
 
+[ext_resource type="Texture2D" uid="uid://b4egfih8a0lr" path="res://assets/images/ui/icons/upgrades/patting-machine.png" id="1_7vq3d"]
 [ext_resource type="Script" path="res://Resources/UpgradeStats.gd" id="1_24gv7"]
 
 [resource]
@@ -11,3 +12,4 @@ price_multiplier = 1.15
 effect_amount = 1.0
 effect_type = 0
 max_level = -1
+icon = ExtResource("1_7vq3d")

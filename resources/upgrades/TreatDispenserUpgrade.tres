@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="UpgradeStats" load_steps=2 format=3 uid="uid://dtyi1f841a6ie"]
+[gd_resource type="Resource" script_class="UpgradeStats" load_steps=3 format=3 uid="uid://dtyi1f841a6ie"]
 
+[ext_resource type="Texture2D" uid="uid://7oj8b4ldeg0n" path="res://assets/images/ui/icons/upgrades/treat-dispenser.png" id="1_0tvvf"]
 [ext_resource type="Script" path="res://Resources/UpgradeStats.gd" id="1_um0jp"]
 
 [resource]
@@ -11,3 +12,4 @@ price_multiplier = 1.15
 effect_amount = 8.0
 effect_type = 0
 max_level = -1
+icon = ExtResource("1_0tvvf")
