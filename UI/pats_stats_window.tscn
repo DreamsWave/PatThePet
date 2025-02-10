@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://n7j6xw4117wn"]
+
+[ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="1_xttpp"]
+[ext_resource type="Texture2D" uid="uid://coqkrnjauh885" path="res://assets/images/ui/window.png" id="2_5mcyt"]
+[ext_resource type="Script" path="res://UI/pats_stats_window.gd" id="2_gh1s6"]
+[ext_resource type="Texture2D" uid="uid://da66q7gokw67p" path="res://assets/images/ui/icons/x.png" id="3_f2ufs"]
+
+[node name="PatsStatsWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 90.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_xttpp")
+script = ExtResource("2_gh1s6")
+
+[node name="WindowNinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5mcyt")
+patch_margin_left = 3
+patch_margin_top = 18
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="WindowTopPanelMarginContainer" type="MarginContainer" parent="WindowNinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="TopPanelHBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowTopPanelMarginContainer"]
+layout_mode = 2
+
+[node name="TopPanelTitleMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 1
+
+[node name="TopPanelTitleLabel" type="Label" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer/TopPanelTitleMarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_xttpp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Stats"
+text_overrun_behavior = 3
+ellipsis_char = "_"
+
+[node name="TopPanelButtonsMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TopPanelButtonsHBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer/TopPanelButtonsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Button" type="Button" parent="WindowNinePatchRect/WindowTopPanelMarginContainer/TopPanelHBoxContainer/TopPanelButtonsMarginContainer/TopPanelButtonsHBoxContainer"]
+visible = false
+layout_mode = 2
+icon = ExtResource("3_f2ufs")
+
+[node name="WindowContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_xttpp")
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ContentMarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ContentScrollContainer" type="ScrollContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="ContentVBoxContainer" type="VBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer"]
+layout_mode = 2
+
+[node name="TotalPatsTitleLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Pats:"
+
+[node name="TotalPatsNumberLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer"]
+layout_mode = 2
+
+[node name="PatsPerClickTitleLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Pats per click:"
+
+[node name="PatsPerClickNumberLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer"]
+layout_mode = 2
+
+[node name="PatsPerSecondTitleLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Pats per second:"
+
+[node name="PatsPerSecondNumberLabel" type="Label" parent="WindowNinePatchRect/WindowContentMarginContainer/ContentMarginContainer/ContentScrollContainer/MarginContainer/ContentVBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"

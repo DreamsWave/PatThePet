@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://c76nakm2cvblr"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://c76nakm2cvblr"]
 
 [ext_resource type="FontFile" uid="uid://ce2lw36a4as8f" path="res://assets/fonts/m5x7.ttf" id="1_8fie3"]
 [ext_resource type="Texture2D" uid="uid://c3gtu2si3ygcl" path="res://assets/images/ui/ui.png" id="1_fqv1q"]
 [ext_resource type="Texture2D" uid="uid://cuxw8yo6pxomw" path="res://assets/images/ui/button/button.png" id="2_60ybn"]
+[ext_resource type="Texture2D" uid="uid://pb8a5wupas4q" path="res://assets/images/ui/h-separator.png" id="2_u1nuf"]
 [ext_resource type="Texture2D" uid="uid://silfd5fybul1" path="res://assets/images/ui/panel.png" id="3_5kri8"]
 [ext_resource type="Texture2D" uid="uid://b7spf04vn8unj" path="res://assets/images/ui/scroll/scroll.png" id="4_8gj0v"]
 
@@ -39,6 +40,13 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(7, 0, 7, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xesdn"]
+texture = ExtResource("2_u1nuf")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe4jm"]
 texture = ExtResource("3_5kri8")
@@ -104,6 +112,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_gaoh6")
 Button/styles/hover = SubResource("StyleBoxTexture_e1ql7")
 Button/styles/normal = SubResource("StyleBoxTexture_8ynp0")
 Button/styles/pressed = SubResource("StyleBoxTexture_ndt3b")
+HSeparator/styles/separator = SubResource("StyleBoxTexture_xesdn")
 Label/colors/font_color = Color(0.509804, 0.635294, 0.819608, 1)
 Label/fonts/font = ExtResource("1_8fie3")
 Panel/styles/panel = SubResource("StyleBoxTexture_qe4jm")

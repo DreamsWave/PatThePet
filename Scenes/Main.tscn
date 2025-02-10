@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckg0wvvq66j8d"]
+[gd_scene load_steps=11 format=3 uid="uid://ckg0wvvq66j8d"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_hkjet"]
 [ext_resource type="Theme" uid="uid://c76nakm2cvblr" path="res://main_theme.tres" id="2_dpr2l"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtd5a4n17hddy" path="res://UI/UpgradesWindow.tscn" id="4_f4ykw"]
 [ext_resource type="PackedScene" uid="uid://dancvl24pawce" path="res://UI/TotalPats.tscn" id="5_0gvsy"]
 [ext_resource type="PackedScene" uid="uid://bwsgt6e6x6orb" path="res://Objects/animal.tscn" id="5_1kejj"]
+[ext_resource type="PackedScene" uid="uid://n7j6xw4117wn" path="res://UI/pats_stats_window.tscn" id="5_ty8xn"]
 [ext_resource type="PackedScene" uid="uid://ck1ds8rvr7yqr" path="res://Objects/pedestal.tscn" id="6_ygmhl"]
 [ext_resource type="PackedScene" uid="uid://bmrl3vij4fxv6" path="res://UI/PassiveIncome.tscn" id="6_ykgfg"]
 [ext_resource type="PackedScene" uid="uid://chgni6yqq2xfr" path="res://Scenes/Debug.tscn" id="8_pjiu4"]
@@ -48,11 +49,18 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="PatsStatsWindow" parent="UI/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_ty8xn")]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 1
+
 [node name="TotalPats" parent="UI/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_0gvsy")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 
 [node name="PassiveIncome" parent="UI/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("6_ykgfg")]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
