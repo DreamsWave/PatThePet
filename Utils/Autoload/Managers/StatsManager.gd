@@ -15,7 +15,8 @@ func reset_game_stats() -> void:
 	game_stats.total_pats = 0
 	game_stats._passive_income_per_second = 0
 	game_stats.passive_income_multiplier = 1.0
-	game_stats.pats_per_click = 1
+	game_stats._pats_per_click = 1
+	game_stats.pats_per_click_multiplier = 1
 
 func save_game_stats() -> void:
 	var save_path: String = "res://Resources/game_stats.tres"

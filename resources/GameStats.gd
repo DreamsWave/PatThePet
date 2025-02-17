@@ -13,15 +13,16 @@ extends Resource
 			_passive_income_per_second = value
 			SignalBus.passive_income_per_second_changed.emit(value)
 
-@export var pats_per_click: float = 1.0:
+@export var _pats_per_click: float = 1.0:
 	set(value):
-		if value != pats_per_click: 
-			pats_per_click = value
+		if value != _pats_per_click: 
+			_pats_per_click = value
 			SignalBus.pats_per_click_changed.emit(value)
 
 @export var upgrades: Array = []
 
 @export var passive_income_multiplier: float = 1.0
+@export var pats_per_click_multiplier: float = 1.0
 
 class UpgradeData:
 	var name: String
@@ -35,7 +36,7 @@ class UpgradeData:
 		return {"name": name, "current_level": current_level}
 
 func add_pats_from_click() -> void:
-	total_pats += pats_per_click
+	total_pats += _pats_per_click
 
 func has_sufficient_pats(amount: float) -> bool:
 	return total_pats >= amount
@@ -63,10 +64,12 @@ func update_upgrade(upgrade_name: String, level: int) -> void:
 			upgrades[i]["current_level"] = level
 			SignalBus.upgrade_level_changed.emit(level, upgrade_stats)
 			update_passive_income()
+			update_pats_per_click()
 			return
 	upgrades.append({"name": upgrade_name, "current_level": level})
 	SignalBus.upgrade_level_changed.emit(level, upgrade_stats)
 	update_passive_income()
+	update_pats_per_click()
 
 func calculate_passive_income() -> float:
 	var income: float = 0.0
@@ -74,7 +77,7 @@ func calculate_passive_income() -> float:
 	# Calculate income based on upgrades level
 	for upgrade in upgrades as Array[Dictionary]:
 		var upgrade_stats: UpgradeStats = UpgradeManager.get_upgrade_stats(upgrade["name"])
-		if upgrade_stats:
+		if upgrade_stats and not upgrade_stats.is_click_upgrade:
 			income = upgrade_stats.apply_effect(income, upgrade["current_level"])
 			
 	# Add passive income multiplier
@@ -84,11 +87,36 @@ func calculate_passive_income() -> float:
 	
 	return snapped(income, 0.01)
 
+func calculate_pats_per_click() -> float:
+	var ppc: float = 1.0
+	
+	# Calculate pats per click based on upgrades level
+	for upgrade in upgrades as Array[Dictionary]:
+		var upgrade_stats: UpgradeStats = UpgradeManager.get_upgrade_stats(upgrade["name"])
+		if upgrade_stats and upgrade_stats.is_click_upgrade:
+			ppc = upgrade_stats.apply_effect(ppc, upgrade["current_level"])
+			
+	# Add pats per click multiplier
+	ppc *= pats_per_click_multiplier
+	
+	# Place for other incomes
+	
+	return snapped(ppc, 0.01)
+
 func update_passive_income() -> void:
 	var new_income: float = calculate_passive_income()
 	if new_income != _passive_income_per_second:
 		_passive_income_per_second = new_income
+		
+func update_pats_per_click() -> void:
+	var ppc: float = calculate_pats_per_click()
+	if ppc != _pats_per_click:
+		_pats_per_click = ppc
 
 func accrue_passive_income() -> void:
 	total_pats += _passive_income_per_second
 	update_passive_income()
+	
+func accrue_pats_per_click() -> void:
+	total_pats += _pats_per_click
+	update_pats_per_click()

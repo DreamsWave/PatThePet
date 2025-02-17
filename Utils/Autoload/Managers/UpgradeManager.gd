@@ -25,11 +25,23 @@ func get_upgrade_cost(upgrade_name: String) -> float:
 	return -1
 
 func get_upgrade_passive_income(upgrade_stats: UpgradeStats) -> float:
+	if (upgrade_stats.is_click_upgrade): return 0.0
+	
 	var upgrade_current_level: int = game_stats.get_upgrade_level(upgrade_stats)
 	if (upgrade_current_level):
 		var passive_income: float = upgrade_stats.apply_effect(0, upgrade_current_level)
 		if (passive_income):
 			return passive_income
+	return 0.0
+	
+func get_upgrade_pats_per_click(upgrade_stats: UpgradeStats) -> float:
+	if (not upgrade_stats.is_click_upgrade): return 0.0
+	
+	var upgrade_current_level: int = game_stats.get_upgrade_level(upgrade_stats)
+	if (upgrade_current_level):
+		var ppc: float = upgrade_stats.apply_effect(0, upgrade_current_level)
+		if (ppc):
+			return ppc
 	return 0.0
 
 func purchase_upgrade(upgrade_name: String, buy_amount: Utils.BuyLvlAmount = Utils.BuyLvlAmount.LVL_1) -> int:

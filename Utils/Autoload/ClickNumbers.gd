@@ -5,7 +5,7 @@ var main_theme: Theme = preload("res://main_theme.tres")
 func display_number(value: float, position: Vector2, is_critical: bool = false, to_scientific_notation: bool = true) -> void:
 	var number: Label = Label.new()
 	number.global_position = Vector2(position.x + randf_range(-5, 15), position.y - 15)
-	number.text = Utils.to_scientific_notation(value) if to_scientific_notation else str(value)
+	number.text = Utils.to_scientific_notation(value, true) if to_scientific_notation else str(value)
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 	
@@ -17,8 +17,11 @@ func display_number(value: float, position: Vector2, is_critical: bool = false, 
 	
 	number.theme = main_theme
 	number.label_settings.font_color = color
-	number.label_settings.outline_color = "#8495b8"
-	number.label_settings.outline_size = 1
+	number.label_settings.outline_color = "#82a2d1"
+	number.label_settings.outline_size = 4
+	number.label_settings.shadow_size = 4
+	number.label_settings.shadow_offset.x = 0
+	number.label_settings.shadow_offset.y = 0
 	number.label_settings.font_size = 16
 	
 	call_deferred("add_child", number)

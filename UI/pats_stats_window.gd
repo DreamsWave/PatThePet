@@ -21,7 +21,7 @@ func _on_passive_income_per_second_changed(pps: float) -> void:
 func init_stats() -> void:
 	var total_pats: float = StatsManager.game_stats.total_pats
 	var pps: float = StatsManager.game_stats.calculate_passive_income()
-	var ppc: float = StatsManager.game_stats.pats_per_click
+	var ppc: float = StatsManager.game_stats.calculate_pats_per_click()
 	set_total_pats(total_pats)
 	set_pats_per_click(ppc)
 	set_pats_per_second(pps)

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnf3c"]
 size = Vector2(68, 32)
 
-[node name="Animal" type="RigidBody2D"]
+[node name="Animal" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_l1qaj")
 

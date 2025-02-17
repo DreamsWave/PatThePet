@@ -73,7 +73,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Animal" parent="UI/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_1kejj")]
 z_index = 1
-position = Vector2(0, -22)
+position = Vector2(0, -15)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

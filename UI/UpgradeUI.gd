@@ -5,9 +5,12 @@ extends Control
 @onready var upgrade_name_label: Label = %UpgradeNameLabel
 @onready var upgrade_level_label: Label = %UpgradeLevelLabel
 @onready var upgrade_passive_income_label: Label = %UpgradePassiveIncomeLabel
+@onready var upgrade_pats_per_click_label: Label = %UpgradePatsPerClickLabel
 @onready var upgrade_price_label: Label = %UpgradePriceLabel
 @onready var buy_upgrade_label: Label = %BuyUpgradeLabel
 @onready var upgrade_passive_income_hbox_container: HBoxContainer = %UpgradePassiveIncomeHBoxContainer
+@onready var passive_income_center_container: CenterContainer = %PassiveIncomeCenterContainer
+@onready var pats_per_click_center_container: CenterContainer = %PatsPerClickCenterContainer
 
 @export var upgrade_stats: UpgradeStats
 @export var is_button_disabled: bool = false
@@ -54,16 +57,27 @@ func _on_purchase_button_pressed() -> void:
 
 func update_ui() -> void:
 	if upgrade_stats:
+		passive_income_center_container.visible = false
+		pats_per_click_center_container.visible = false
+		
 		var upgrade_current_level: int = StatsManager.game_stats.get_upgrade_level(upgrade_stats)
 		var upgrade_passive_income: float = UpgradeManager.get_upgrade_passive_income(upgrade_stats)
+		var upgrade_ppc: float = UpgradeManager.get_upgrade_pats_per_click(upgrade_stats)
 		var upgrade_price: int = snapped(get_upgrade_price(), 1)
 		var lvl_amount: int = Utils.get_upgrade_multiplier_for_buy_lvl(upgrade_stats, buy_lvl_amount)
+		
+		if (upgrade_passive_income > 0.0): 
+			passive_income_center_container.visible = true
+		
+		if (upgrade_ppc > 0.0): 
+			pats_per_click_center_container.visible = true
 		
 		upgrade_icon.texture = upgrade_stats.icon
 		upgrade_name_label.text = str(upgrade_stats.name)
 		upgrade_level_label.text = "Lvl " + str(upgrade_current_level) if upgrade_current_level > 0 else ""
 		upgrade_level_label.visible = upgrade_current_level > 0
 		upgrade_passive_income_label.text = "+" + Utils.to_scientific_notation(upgrade_passive_income)
+		upgrade_pats_per_click_label.text = "+" + Utils.to_scientific_notation(upgrade_ppc)
 		buy_upgrade_label.text = "Buy " + (str("MAX") if buy_lvl_amount == Utils.BuyLvlAmount.LVL_MAX else str(lvl_amount))
 		upgrade_price_label.text = Utils.to_scientific_notation(upgrade_price)
 		upgrade_passive_income_hbox_container.visible = upgrade_current_level > 0
