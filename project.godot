@@ -23,6 +23,7 @@ SignalBus="*res://Utils/Autoload/SignalBus.gd"
 CursorManager="*res://Utils/Autoload/Managers/CursorManager.gd"
 StatsManager="*res://Utils/Autoload/Managers/StatsManager.gd"
 UpgradeManager="*res://Utils/Autoload/Managers/UpgradeManager.gd"
+ClickNumbers="*res://Utils/Autoload/ClickNumbers.gd"
 
 [debug]
 
